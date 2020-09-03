@@ -16,19 +16,22 @@
         <br></br>
         <button id="tts-btn" class="btn-grad"> TTS </button>
         <button id="hello-btn" class="btn-grad">Hello World</button>
+        <button id="voices-btn" class="btn-grad">Populate Voices List</button>
     </div>
     <div class="container">
         <div class="description">
             <h4>TTS V 1.0</h4>
             The Button Is Generally Sensitive To Clicks <br></br>
-            Clicking the TTS Button will cause the voice to speak twice (In Firefox) 
-            see: (https://stackoverflow.com/questions/44395423/why-cant-speechsynthesis-speak-be-called-more-than-once-in-firefox) <br></br>
+            Clicking the TTS Button will cause the voice to speak twice (In Firefox)
+            see:
+            (https://stackoverflow.com/questions/44395423/why-cant-speechsynthesis-speak-be-called-more-than-once-in-firefox)
+            <br></br>
 
             Type Whatever You Want <br></br>
             Select Voices From the List <br></br>
             The script will pull the voices from your computer (whatever voices you have natively on your
             computer/phone) <br></br>
-            Click the TTS button and it will play what you type <br></br> 
+            Click the TTS button and it will play what you type <br></br>
 
             Page Has to be refreshed if voices are not showing in the select > options list
 
@@ -38,11 +41,18 @@
 
 
     <script>
+        var pop_voices = document.querySelector("#voices-btn");
+        pop_voices.onclick = function () {
 
+
+            location.reload(true);
+
+        }
         // Elements 
         var voiceList = document.querySelector("#voicelist");
         var tts_input = document.querySelector("#tts");
         var tts_button = document.querySelector("#tts-btn");
+
 
         // TTS API 
         var tts_main = window.speechSynthesis;
