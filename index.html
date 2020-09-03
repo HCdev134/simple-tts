@@ -19,19 +19,20 @@
     </div>
     <div class="container">
         <div class="description">
-            <h4>TTS V 1.0</h4>  
-            The Button Is Generally Sensitive To Clicks <br></br> 
-            Clicking the TTS Button will cause the voice to speak twice <br></br> 
+            <h4>TTS V 1.0</h4>
+            The Button Is Generally Sensitive To Clicks <br></br>
+            Clicking the TTS Button will cause the voice to speak twice <br></br>
 
-            Type Whatever You Want <br></br> 
-            Select Voices From the List <br></br> 
-            The script will pull the voices from your computer (whatever voices you have natively on your computer/phone) <br></br> 
+            Type Whatever You Want <br></br>
+            Select Voices From the List <br></br>
+            The script will pull the voices from your computer (whatever voices you have natively on your
+            computer/phone) <br></br>
             Click the TTS button and it will play what you type
 
 
         </div>
     </div>
-   
+
 
     <script>
 
@@ -48,14 +49,14 @@
 
 
         tts_button.addEventListener("click", () => {
-           
-            var toSpeak = new SpeechSynthesisUtterance(tts_input.value); 
+
+            var toSpeak = new SpeechSynthesisUtterance(tts_input.value);
             var selectedVoiceName = voiceList.selectedOptions[0].getAttribute("data-name");
-            voices.forEach((voice)=> {
-                if(voice.name === selectedVoiceName){
+            voices.forEach((voice) => {
+                if (voice.name === selectedVoiceName) {
                     toSpeak.voice = voice;
                 }
-               window.speechSynthesis.speak(toSpeak); 
+                window.speechSynthesis.speak(toSpeak);
             });
 
         })
@@ -64,8 +65,8 @@
         getVoices();
         console.log(`Voices: ${getVoices()}`);
 
-        if(speechSynthesis == "undefined"){
-            speechSynthesis.onvoiceschanged = getVoices; 
+        if (speechSynthesis == "undefined") {
+            speechSynthesis.onvoiceschanged = getVoices;
         }
         function getVoices() {
             voices = tts_main.getVoices()
@@ -76,7 +77,7 @@
 
                 listItem.setAttribute("data-lang", voice.lang);
                 listItem.setAttribute("data-name", voice.name);
-                console.log(listItem); 
+                console.log(listItem);
                 voiceList.appendChild(listItem);
             });
 
@@ -84,7 +85,11 @@
         }
 
         document.getElementById("hello-btn").onclick = function speaker() {
-           var tts_string_instance = "Here is a string of text"
+
+            if (window.speechSynthesis.speaking) {
+                window.speechSynthesis.cancel();
+            }
+            var tts_string_instance = "Here is a string of text"
             var msg = new SpeechSynthesisUtterance(tts_string_instance);
             // msg.text = "Hello World"; 
             window.speechSynthesis.speak(msg);
