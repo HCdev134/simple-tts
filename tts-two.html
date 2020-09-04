@@ -39,8 +39,9 @@
         </div>
     </div>
 
-
-    <script>
+    
+    <script src="./moztts.js"></script>
+    <!-- <script>
         var pop_voices = document.querySelector("#voices-btn");
         pop_voices.onclick = function () {
 
@@ -69,15 +70,11 @@
                 if (voice.name === selectedVoiceName) {
                     toSpeak.voice = voice;
                 }
-                tts_main.speak(toSpeak);
+                window.speechSynthesis.speak(toSpeak);
             });
-            // tts_input.blur()
 
         })
 
-        speechSynthesis.getVoices().forEach(function (voice) {
-            console.log(voice.name, voice.default ? voice.default : '');
-        });
 
         getVoices();
         console.log(`Voices: ${getVoices()}`);
@@ -101,21 +98,18 @@
             voiceList.selectedOptions = 0;
         }
 
-        // document.getElementById("hello-btn").onclick = function speaker() {
+        document.getElementById("hello-btn").onclick = function speaker() {
 
-        //     if (window.speechSynthesis.speaking) {
-        //         window.speechSynthesis.cancel();
-        //     }
-        //     var tts_string_instance = "Here is a string of text";
+            if (window.speechSynthesis.speaking) {
+                window.speechSynthesis.cancel();
+            }
+            var tts_string_instance = "Here is a string of text"
+            var msg = new SpeechSynthesisUtterance(tts_string_instance);
+            // msg.text = "Hello World"; 
+            window.speechSynthesis.speak(msg);
+        }
 
-
-        //     var msg = new SpeechSynthesisUtterance(tts_string_instance);
-        //     msg.lang = 'en-US';
-        //     // msg.text = "Hello World"; 
-        //     window.speechSynthesis.speak(msg);
-        // }
-
-    </script>
+    </script> -->
 </body>
 
 </html>
