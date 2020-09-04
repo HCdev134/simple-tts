@@ -1,4 +1,6 @@
 var pop_voices = document.querySelector("#voices-btn");
+
+
 pop_voices.onclick = function () {
 
 
@@ -21,19 +23,21 @@ var voices = [];
 tts_button.addEventListener("click", () => {
 
     var toSpeak = new SpeechSynthesisUtterance(tts_input.value);
-    var selectedVoiceName = voiceList.selectedOptions[0].getAttribute("data-name");
-    voices.forEach((voice) => {
-        if (voice.name === selectedVoiceName) {
-            toSpeak.voice = voice;
+    var selectedOption = voiceList.selectedOptions[0].getAttribute("data-name");
+    for(i = 0; i < voices.length ; i++) {
+        if(voices[i].name === selectedOption) {
+          toSpeak.voice = voices[i];
         }
-        window.speechSynthesis.speak(toSpeak);
-    });
-
-})
+      }
+    //   toSpeak.pitch = pitch.value;
+    //   toSpeak.rate = rate.value;
+      tts_main.speak(toSpeak);
+    
+});
 
 
 getVoices();
-console.log(`Voices: ${getVoices()}`);
+
 
 if (speechSynthesis == "undefined") {
     speechSynthesis.onvoiceschanged = getVoices;
@@ -54,13 +58,17 @@ function getVoices() {
     voiceList.selectedOptions = 0;
 }
 
-document.getElementById("hello-btn").onclick = function speaker() {
 
-    if (window.speechSynthesis.speaking) {
-        window.speechSynthesis.cancel();
-    }
-    var tts_string_instance = "Here is a string of text"
-    var msg = new SpeechSynthesisUtterance(tts_string_instance);
-    // msg.text = "Hello World"; 
-    window.speechSynthesis.speak(msg);
-}
+// #region 2nd call 
+// document.getElementById("hello-btn").onclick = function speaker() {
+
+//     if (window.speechSynthesis.speaking) {
+//         window.speechSynthesis.cancel();
+//     }
+//     var tts_string_instance = "Here is a string of text"
+//     var msg = new SpeechSynthesisUtterance(tts_string_instance);
+//     // msg.text = "Hello World"; 
+//     window.speechSynthesis.speak(msg);
+// }
+// #endregion 2nd call 
+
