@@ -34,11 +34,56 @@ input[type=text] {
     border: 2px solid #000; 
     border-radius: 12px; 
   }
+
+  /* Containers */
+  .ranges {
+    width: 100%;   }
+  
+  /* The slider itself */
+  .slider {
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    width: 80%; /* Full-width */
+    height: 25px; /* Specified height */
+    background: #d3d3d3; /* Grey background */
+    outline: none; /* Remove outline */
+    border-radius: 12px;
+    opacity: 0.6; /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    -moz-transition: .2s;
+    -o-transition: .2s;
+    transition: opacity .2s;
+  }
+  
+  /* Mouse-over effects */
+  .slider:hover {
+    opacity: 1; /* Fully shown on mouse-over */
+  }
+  
+  /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 15px; /* Set a specific slider handle width */
+    height: 25px; /* Slider handle height */
+    background: #03343b; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+  }
+  
+  .slider::-moz-range-thumb {
+    width: 15px; /* Set a specific slider handle width */
+    height: 25px; /* Slider handle height */
+    background: #03343b; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+  }
+
+
+
 .container{
     width: 85%;
     max-width: 65em;
     margin: 0 auto;
-    font-size: 1.5rem;  
+    font-size: 2rem;  
 }
 .description{
     padding: 6em; 
@@ -59,9 +104,11 @@ input[type=text] {
 
     margin-left: 5%; 
     margin-top: 5%; 
+
+    outline:none; 
 }
 
 .btn-grad:hover { 
-    background-position: right center; 
+    background: #222; 
 
 }

@@ -6,30 +6,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TTS Example</title>
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
     <div class="container">
-        Voices <select name="" id="voicelist"></select>
+        <h1 style="text-align: center;"> Voices </h1>
+        <select name="" id="voicelist" style="text-align: center;"></select>
         <br></br>
         <input type="text" id="tts">
         <br></br>
-        <input type="range" name="" id="pitch">
+
+  
         <button id="tts-btn" class="btn-grad"> TTS </button>
         <button id="hello-btn" class="btn-grad">Hello World</button>
         <button id="voices-btn" class="btn-grad">Populate Voices List</button>
     </div>
     <div class="container">
+        <div class="ranges">
+            Rate:<br> <input type="range" min="0.5" max="2" value="1" step="0.1" class="slider" id="rate"> 
+            <div class="rate-value">1</div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="ranges">
+            Pitch:<br> <input type="range" min="0" max="2" value="1" step="0.1" class="slider" id="pitch">
+            <div class="pitch-value">1</div>
+            <div class="clearfix"></div>
+          </div>
+    </div>
+    
+    <div class="container">
         <div class="description">
-            <h4>TTS V 1.0</h4>
-            The Button Is Generally Sensitive To Clicks <br></br>
+            <h4>TTS V 2.1</h4>
+            <span class="fa fa-check" style="color:#033">New</span><br>
+            Range Sliders Work On Desktop <br> 
+            FIXED: TTS speaking more than once on firefox 
+            The Button Is Generally Sensitive To Clicks <br>
             Clicking the TTS Button will cause the voice to speak twice (In Firefox)
-            see:
+            see: <span class="green fa fa-check" style="color: #030113;">FIXED</span>
             (https://stackoverflow.com/questions/44395423/why-cant-speechsynthesis-speak-be-called-more-than-once-in-firefox)
             <br></br>
 
-            Type Whatever You Want <br></br>
-            Select Voices From the List <br></br>
+            Type Whatever You Want <br>
+            Select Voices From the List <br>
             The script will pull the voices from your computer (whatever voices you have natively on your
             computer/phone) <br></br>
             Click the TTS button and it will play what you type <br></br>
