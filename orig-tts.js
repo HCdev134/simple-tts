@@ -4,7 +4,7 @@ var pop_voices = document.querySelector("#voices-btn");
 pop_voices.onclick = function () {
 
 
-    location.reload(true);
+  location.reload(true);
 
 }
 // Elements 
@@ -22,18 +22,18 @@ var rateValue = document.querySelector('.rate-value');
 // Update Slider Value 
 pitch, rate;
 
-pitchValue.innerHTML = pitch.value; 
+pitchValue.innerHTML = pitch.value;
 rateValue.innerHTML = rate.value;
 
 pitch.oninput = function () {
 
 
-    console.log(`Pitch Input Adjusted ${this.value}`);
-    pitchValue.innerHTML = this.value;
+  console.log(`Pitch Input Adjusted ${this.value}`);
+  pitchValue.innerHTML = this.value;
 }
 rate.oninput = function () {
-    console.log(`Rate Input Adjusted ${this.value}`);
-    rateValue.innerHTML = this.value;
+  console.log(`Rate Input Adjusted ${this.value}`);
+  rateValue.innerHTML = this.value;
 }
 
 // TTS API , TTS Object Instance 
@@ -45,48 +45,54 @@ var voices = [];
 
 tts_button.addEventListener("click", () => {
 
-    // var toSpeak = new SpeechSynthesisUtterance(tts_input.value);
-    // var selectedOption = voiceList.selectedOptions[0].getAttribute("data-name");
-    // for (i = 0; i < voices.length; i++) {
-    //     if (voices[i].name === selectedOption) {
-    //         toSpeak.voice = voices[i];
-    //     }
-    // }
-    // //   toSpeak.pitch = pitch.value;
-    // //   toSpeak.rate = rate.value;
-    // if (tts_input.value == null) {
-    //     console.log("condition met input null")
-    //     tts_input.style.border = '2px solid #FF0000';
-    // }
-    // tts_main.speak(toSpeak);
+  //#region old setting with forEach
+  // var toSpeak = new SpeechSynthesisUtterance(tts_input.value);
+  // var selectedOption = voiceList.selectedOptions[0].getAttribute("data-name");
+  // for (i = 0; i < voices.length; i++) {
+  //     if (voices[i].name === selectedOption) {
+  //         toSpeak.voice = voices[i];
+  //     }
+  // }
+  // //   toSpeak.pitch = pitch.value;
+  // //   toSpeak.rate = rate.value;
+  // if (tts_input.value == null) {
+  //     console.log("condition met input null")
+  //     tts_input.style.border = '2px solid #FF0000';
+  // }
+  // tts_main.speak(toSpeak);
+  //#endregion old setting with forEach
 
-    
-    speak()
+  speechSynthesis.getVoices().forEach(function (voice) {
+    console.log(voice.name, voice.default ? voice.default : '');
+  });
+  speak();
 
 });
-function speak(){
-    if (tts_main.speaking) {
-       
-        console.error('speechSynthesis.speaking');
-        return;
-    }
-    if (tts_input.value !== '') {
+
+function speak() {
+  if (tts_main.speaking) {
+
+    console.error('speechSynthesis.speaking');
+    return;
+  }
+  if (tts_input.value !== '') {
+
     var toSpeak = new SpeechSynthesisUtterance(tts_input.value);
     toSpeak.onend = function (event) {
-        console.log('SpeechSynthesisUtterance.onend');
-        tts_input.style.opacity = 1; 
+      console.log('SpeechSynthesisUtterance.onend');
+      tts_input.style.opacity = 1;
     }
     toSpeak.onerror = function (event) {
-        console.error('SpeechSynthesisUtterance.onerror');
+      console.error('SpeechSynthesisUtterance.onerror');
     }
     var selectedOption = voiceList.selectedOptions[0].getAttribute('data-name');
-    for(i = 0; i < voices.length ; i++) {
-      if(voices[i].name === selectedOption) {
+    for (i = 0; i < voices.length; i++) {
+      if (voices[i].name === selectedOption) {
         toSpeak.voice = voices[i];
         break;
       }
     }
-      tts_input.style.opacity = 0.7; 
+    tts_input.style.opacity = 0.7;
     toSpeak.pitch = pitch.value;
     toSpeak.rate = rate.value;
     tts_main.speak(toSpeak);
@@ -97,36 +103,43 @@ getVoices();
 
 
 if (speechSynthesis == "undefined") {
-    speechSynthesis.onvoiceschanged = getVoices;
+  speechSynthesis.onvoiceschanged = getVoices;
 }
 
 function getVoices() {
-    voices = tts_main.getVoices()
-    voiceList.innerHTML = "";
-    voices.forEach((voice) => {
-        var listItem = document.createElement("option");
-        listItem.textContent = voice.name;
+  voices = tts_main.getVoices()
 
-        listItem.setAttribute("data-lang", voice.lang);
-        listItem.setAttribute("data-name", voice.name);
-        console.log(listItem);
-        voiceList.appendChild(listItem);
-    });
 
-    voiceList.selectedOptions = 0;
+
+  voiceList.innerHTML = "";
+
+  speechSynthesis.getVoices().forEach(function (voice) {
+    console.log(voice.name, voice.default ? voice.default : '');
+  });
+  voices.forEach((voice) => {
+    var listItem = document.createElement("option");
+    listItem.textContent = voice.name;
+
+    listItem.setAttribute("data-lang", voice.lang);
+    listItem.setAttribute("data-name", voice.name);
+    console.log(listItem);
+    voiceList.appendChild(listItem);
+  });
+
+  voiceList.selectedOptions = 0;
 }
-pitch.onchange = function() {
-    pitchValue.textContent = pitch.value;
-  }
-  
-  rate.onchange = function() {
-    rateValue.textContent = rate.value;
-  }
-  
-  voiceList.onchange = function(){
-    speak();
-  }
-// #region 2nd call 
+pitch.onchange = function () {
+  pitchValue.textContent = pitch.value;
+}
+
+rate.onchange = function () {
+  rateValue.textContent = rate.value;
+}
+
+voiceList.onchange = function () {
+  speak();
+}
+// #region 2nd call
 // document.getElementById("hello-btn").onclick = function speaker() {
 
 //     if (window.speechSynthesis.speaking) {
