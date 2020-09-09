@@ -1,3 +1,6 @@
+
+// Example code, our references are different 
+
 var synth = window.speechSynthesis;
 
 var inputForm = document.querySelector('select#voicelist');

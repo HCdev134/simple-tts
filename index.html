@@ -14,22 +14,30 @@
         <h1 style="text-align: center;"> Voices </h1>
         <select name="" id="voicelist" style="text-align: center;"></select>
         <br></br>
+        <div id="anim-root" class="lds-ellipsis">
+        
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        
+        </div>
         <input type="text" id="tts">
-        <br></br>
+        <br>
 
   
         <button id="tts-btn" class="btn-grad"> TTS </button>
-        <button id="hello-btn" class="btn-grad">Hello World</button>
+       
         <button id="voices-btn" class="btn-grad">Populate Voices List</button>
     </div>
     <div class="container">
         <div class="ranges">
-            Rate:<br> <input type="range" min="0.5" max="2" value="1" step="0.1" class="slider" id="rate"> 
+            Rate:<br> <input type="range" min="0.5" max="2" value="1" step="0.01" class="slider" id="rate"> 
             <div class="rate-value">1</div>
             <div class="clearfix"></div>
           </div>
           <div class="ranges">
-            Pitch:<br> <input type="range" min="0" max="2" value="1" step="0.1" class="slider" id="pitch">
+            Pitch:<br> <input type="range" min="0" max="2" value="1" step="0.01" class="slider" id="pitch">
             <div class="pitch-value">1</div>
             <div class="clearfix"></div>
           </div>
@@ -39,27 +47,49 @@
         <div class="description">
             <h4>TTS V 2.1</h4>
             <span class="fa fa-check" style="color:#033">New</span><br>
-            Range Sliders Work On Desktop <br> 
+            Range Sliders Work On Desktop AND mobile <br> 
             FIXED: TTS speaking more than once on firefox 
             The Button Is Generally Sensitive To Clicks <br>
-            Clicking the TTS Button will cause the voice to speak twice (In Firefox)
-            see: <span class="green fa fa-check" style="color: #033;">FIXED</span>
-            (https://stackoverflow.com/questions/44395423/why-cant-speechsynthesis-speak-be-called-more-than-once-in-firefox)
-            <br></br>
+            <span class="fa fa-check" style="color:#033">Issue Fixed: Working Fine</span>
 
+            <h3>Instructions</h3>
             Type Whatever You Want <br>
             Select Voices From the List <br>
-            The script will pull the voices from your computer (whatever voices you have natively on your
-            computer/phone) <br></br>
-            Click the TTS button and it will play what you type <br></br>
-
-            Page Has to be refreshed if voices are not showing in the select > options list
+            The script will pull the voices from your computer (whatever voices you have natively on your computer/phone) <br>
+            Click the TTS button and it will play what you type <br>
+            <br>
+            Page Has to be refreshed if voices are not showing in the select > options list <br>
+            <br>
+            Click "Poupulate Voices" Button for voices to show up if they are not <br>
+            <span class="fa fa-check" style="color:#033">New</span> 
+            Added Speaking Animation <br>
+            <span class="fa fa-check" style="color:#033">New</span> 
+            Added Padding on Mobile Description<br>
+            <br> 
+           <div> Type into the field and click "TTS" for TTS </div>
 
 
         </div>
     </div>
 
+    <footer>
 
+    </footer>
+    <script src="./js/jquery.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.0/anime.min.js"></script>  -->
+    <!-- <script>
+
+        $(function(){
+            console.log("Jquery", jQuery); 
+            console.log($); 
+
+            var jDiv = $("#anim-root"); 
+
+            
+        });
+
+    </script> -->
+   
     <script src="./orig-tts.js"></script>
     
 </body>

@@ -1,3 +1,20 @@
+:root{
+  --theme-one-dark: #111; 
+  --theme-blue-darkblue: #0c094e;
+  --theme-blue-lightblue:#0cbaba;
+  --clearsky-graident: linear-gradient(to top, #005c97, #363795);
+
+  --buttons-gradient: linear-gradient(20deg, #0cbaba 0%, #005c97 54%, #363795 100%);
+  --clearsky-light: #005c97; 
+  --clearsky-dark: #363795; 
+  
+
+
+
+
+
+}
+
 *,
 *::before,
 *::after{
@@ -7,9 +24,10 @@ body{
     margin:0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     line-height: 1.6;
-    background: #4CA1AF;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to top, #C4E0E5, #4CA1AF);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to top, #C4E0E5, #03343b); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #005c97; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #005c97, #363795); /* Chrome 10-25, Safari 5.1-6 */
+    background: var(--clearsky-graident); 
+    
     
 }
 img{
@@ -22,6 +40,9 @@ h2,
 h3, 
 p{
     margin: 0;
+}
+select{
+  text-align: center; 
 }
 input {
     width: 100%;
@@ -77,8 +98,78 @@ input[type=text] {
     cursor: pointer; /* Cursor on hover */
   }
 
+/* animation for when we are speaking */
 
 
+
+.lds-ellipsis {
+  /* text-align: center; */
+
+
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-ellipsis div {
+  /* margin pushes animation dots below text */
+  margin:20px auto; 
+
+  position: absolute;
+  top: 33px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--theme-one-dark); 
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis div:nth-child(even){
+  background: #011518; 
+}
+.lds-ellipsis div:nth-child(1) {
+  left: 8px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(2) {
+  left: 8px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(3) {
+  left: 32px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(4) {
+  left: 56px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(240px, 0);
+  }
+}
+.lds-ellipsis::after{
+  
+  content: "Speaking"
+}
 .container{
     width: 85%;
     max-width: 65em;
@@ -87,8 +178,14 @@ input[type=text] {
 }
 .description{
     padding: 6em; 
-    font-size: 14px;
+    font-size: 16px;
     color: #111; 
+}
+/* Layout Changes For Mobile */
+@media(max-width:768px){
+  .description{
+    padding:1em; 
+  }
 }
 .btn-grad {
 
@@ -99,7 +196,7 @@ input[type=text] {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    background-image: linear-gradient(to right, #03343b 0%, #000 100%); 
+    background-image: var(--buttons-gradient);
     border-radius: 12px; 
 
     margin-left: 5%; 
@@ -110,5 +207,7 @@ input[type=text] {
 
 .btn-grad:hover { 
     background: #222; 
+    background: linear-gradient(190deg, #0cbaba 0%, #005c97 74%, #380036 100%);
+    cursor: pointer;
 
 }
