@@ -4,7 +4,7 @@
   --theme-blue-lightblue:#0cbaba;
   --clearsky-graident: linear-gradient(to top, #005c97, #363795);
 
-  --buttons-gradient: linear-gradient(20deg, #0cbaba 0%, #005c97 54%, #363795 100%);
+  --buttons-gradient: linear-gradient(20deg, #0c094e 74%, #363795 100%);
   --clearsky-light: #005c97; 
   --clearsky-dark: #363795; 
   
@@ -196,7 +196,7 @@ input[type=text] {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    background-image: var(--buttons-gradient);
+    background: var(--theme-blue-darkblue);
     border-radius: 12px; 
 
     margin-left: 5%; 
@@ -207,7 +207,7 @@ input[type=text] {
 
 .btn-grad:hover { 
     background: #222; 
-    background: linear-gradient(190deg, #0cbaba 0%, #005c97 74%, #380036 100%);
+    background: linear-gradient(190deg, #0c094e 0%,  #363795  100%);
     cursor: pointer;
 
 }
